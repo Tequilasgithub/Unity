@@ -24,8 +24,7 @@ public class Player : MonoBehaviour
     private int index=0;
     // Update is called once per frame
     void Update()
-    {
-        
+    { 
         float step = BackGroundMovingSpeed * Application.targetFrameRate * Time.deltaTime;
         if (Input.GetMouseButtonDown(0))
         {
