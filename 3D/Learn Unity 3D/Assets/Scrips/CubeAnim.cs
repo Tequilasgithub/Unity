@@ -17,6 +17,6 @@ public class CubeAnim : MonoBehaviour
     }
     public void back()
     {
-        Debug.Log("come");
+        
     }
 }
