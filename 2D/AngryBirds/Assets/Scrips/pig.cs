@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class pig : MonoBehaviour
 {
-    public float maxSpeed=10;
-    public float minSpeed=5;
+    public float maxSpeed=8;
+    public float minSpeed=4;
     private SpriteRenderer render;
     public Sprite hurt;
+    public GameObject boom;
+    public GameObject score;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,12 +25,23 @@ public class pig : MonoBehaviour
     {
         if(collision.relativeVelocity.magnitude>maxSpeed)
         {
-            Destroy(gameObject);
+            Dead();
         }
         else if(collision.relativeVelocity.magnitude>minSpeed)
         {
             render.sprite=hurt;
         }
 
+    }
+    private void Dead()
+    {
+        GameManager._instance.pigs.Remove(this);
+        GameObject obj = Instantiate(score,transform.position+new Vector3(0,0.5f,0),Quaternion.identity);
+        Destroy(obj,1.5f);
+        Destroy(gameObject);
+        Instantiate(boom,transform.position,Quaternion.identity);
+        //克隆一个boom对象
+        
+        
     }
 }
