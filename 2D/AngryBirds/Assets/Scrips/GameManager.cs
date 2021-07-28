@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public List<pig> pigs;
     private Vector3 origionPos;
     //小鸟起始位置
+    public GameObject win;
+    public GameObject lose;
     private void Awake()
     {
         if(birds.Count>0)
@@ -50,17 +52,24 @@ public class GameManager : MonoBehaviour
         if(pigs.Count>0)
         {
             if(birds.Count>0)
+            //进行中
             {
                 Initialized();
             }
             else
+            //输
             {
-
+                lose.SetActive(true);
             }
         }
         else
+        //赢
         {
-
+              win.SetActive(true);
         }
+    }
+    public void ShowStars()
+    {
+
     }
 }
