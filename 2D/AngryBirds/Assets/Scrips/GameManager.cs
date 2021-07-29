@@ -12,14 +12,15 @@ public class GameManager : MonoBehaviour
     //小鸟起始位置
     public GameObject win;
     public GameObject lose;
+    public GameManager[] stars;
     private void Awake()
     {
         if(birds.Count>0)
-        origionPos=birds[0].transform.position;
+        origionPos = birds[0].transform.position;
     }
     void Start()
     {
-        _instance=this;
+        _instance = this;
         
         Initialized();
     }
@@ -37,13 +38,13 @@ public class GameManager : MonoBehaviour
             if(i==0)
             {
                 birds[i].transform.position=origionPos;
-                birds[i].enabled=true;
-                birds[i].sp.enabled=true;
+                birds[i].enabled    = true;
+                birds[i].sp.enabled = true;
             }
             else
             {
-                birds[i].enabled=false;
-                birds[i].sp.enabled=false;
+                birds[i].enabled    = false;
+                birds[i].sp.enabled = false;
             }
         }
     }
@@ -55,6 +56,7 @@ public class GameManager : MonoBehaviour
             //进行中
             {
                 Initialized();
+                
             }
             else
             //输
@@ -70,6 +72,9 @@ public class GameManager : MonoBehaviour
     }
     public void ShowStars()
     {
-
+        for(int i = 0;i<birds.Count;i++)
+        {
+            
+        }
     }
 }
