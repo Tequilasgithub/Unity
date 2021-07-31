@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement; //
 public class GameManager : MonoBehaviour
 {
+    
     // Start is called before the first frame update
     public static GameManager _instance;
     public List<bird> birds; //小鸟脚本的列表
@@ -23,14 +24,10 @@ public class GameManager : MonoBehaviour
         _instance = this;
         Initialized(); //初始化
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void Initialized() //初始化声明
+    ///<summary>
+    ///初始化声明
+    ///</summary>
+    private void Initialized() 
     {
         for(int i=0;i<birds.Count;i++)
         {
@@ -47,8 +44,10 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    ///<summary>
+    ///下一只小鸟初始化或者游戏结束的逻辑判断
+    ///</summary>
     public void NextBird() 
-    //下一只小鸟初始化或者游戏结束的逻辑判断
     {
         if(pigs.Count>0) //有剩下的猪
         {
@@ -67,15 +66,18 @@ public class GameManager : MonoBehaviour
               win.SetActive(true);
         }
     }
+    ///<summary>
+    ///根据剩余小鸟数决定星星
+    ///</summary>
     public void ShowStars()
-    //根据剩余小鸟数决定星星
     {
         StartCoroutine("show");
         //继续运行协程show
     }
+    ///<summary>
+    ///协程, 就像一个函数, 能够暂停执行并将控制权返还给Unity, 然后在下一帧继续执行
+    ///</summary>
     IEnumerator show()
-    //协程的声明
-    //协程就像一个函数，能够暂停执行并将控制权返还给Unity，然后在下一帧继续执行
     {
         for(int i = 0;i<birds.Count+1;i++)
         {

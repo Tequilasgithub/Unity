@@ -54,11 +54,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   height: 0.1
-  time: 0.2
+  time: 0
   alwaysUp: 0
   minDistance: 0.1
   timeTransitionSpeed: 1
-  desiredTime: 2
+  desiredTime: 0
   startColor: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
   endColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!23 &6927272551072769446
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 6927272551444261068}
   m_Layer: 0
   m_Name: redBird
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,14 +131,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6927272551444261063}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.014, y: -1.58, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.13133936, w: 0.99133754}
+  m_LocalPosition: {x: -5.0154076, y: -1.6119533, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6927272551072769448}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -15.094}
 --- !u!212 &6927272551444261064
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -260,12 +260,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 1.2
-  sp: {fileID: 0}
+  sp: {fileID: 6927272551444261062}
   lineRight: {fileID: 0}
   lineLeft: {fileID: 0}
   rightPos: {fileID: 0}
   leftPos: {fileID: 0}
   boom: {fileID: 2789039713947135671, guid: 3d4cb26905e395a4584566d861257e5b, type: 3}
+  cameraSmooth: 3
+  selectAudio: {fileID: 8300000, guid: 3641c9435ad52ea429348437c2742cdb, type: 3}
+  flyAudio: {fileID: 8300000, guid: 65774e057815a5e4fa70215e9acad616, type: 3}
+  hurt: {fileID: 8669725828687014486, guid: 7b9695f17f46651468a40c8bdbd05139, type: 3}
 --- !u!114 &6927272551444261068
 MonoBehaviour:
   m_ObjectHideFlags: 0

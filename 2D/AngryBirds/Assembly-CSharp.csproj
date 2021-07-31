@@ -36,6 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scrips\PausePanel.cs" />
      <Compile Include="Assets\PocketRPG Trails\Scripts\Effects\WeaponTrail.cs" />
      <Compile Include="Assets\Scrips\GameManager.cs" />
      <Compile Include="Assets\Scrips\bird.cs" />
@@ -46,7 +47,9 @@
      <Compile Include="Assets\Scrips\TestMyTrail.cs" />
      <Compile Include="Assets\Scrips\win.cs" />
      <Compile Include="Assets\Scrips\block.cs" />
-     <Compile Include="Assets\Scrips\PausePanel.cs" />
+     <Compile Include="Assets\Scrips\YellowBird.cs" />
+     <Compile Include="Assets\Scrips\GreenBird.cs" />
+     <Compile Include="Assets\Scrips\BlackBird.cs" />
     <Reference Include="UnityEngine">
         <HintPath>D:/Tequila/work/unity/2020.3.12f1c1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

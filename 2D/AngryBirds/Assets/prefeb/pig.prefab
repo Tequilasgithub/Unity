@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7619610177601525073}
   m_Layer: 0
   m_Name: pig
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7619610177601525074}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.67, y: -0.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -163,3 +163,6 @@ MonoBehaviour:
   hurt: {fileID: -5668377657564915152, guid: 7b9695f17f46651468a40c8bdbd05139, type: 3}
   boom: {fileID: 2789039713947135671, guid: 3d4cb26905e395a4584566d861257e5b, type: 3}
   score: {fileID: 3507596168833218478, guid: 93d6d0dc904956d498c0e87881878cc3, type: 3}
+  pigCollisionAudio: {fileID: 8300000, guid: c1a5f2757fb06fd45812883f28dbf66b, type: 3}
+  deadAudio: {fileID: 8300000, guid: 10ea50ad52f85f04d99128c58ee3b632, type: 3}
+  birdCollisionAudio: {fileID: 8300000, guid: 32b5cb2ec3029484eb0a71e43bd697e0, type: 3}

@@ -4,34 +4,40 @@ using UnityEngine;
 
 public class bird : MonoBehaviour
 {
+    // public enum BirdType
+    // {
+    //     redBird,
+    //     yellowBird,
+    //     greenBird,
+    //     blackBird
+    // }
+    // public BirdType birdType; //鸟的类型
     private bool mouseDown=false;
-    
     public float maxDistance=3; //最大弹簧关节距离
     [HideInInspector]//隐藏sp
     public SpringJoint2D sp; //弹簧关节
-    private Rigidbody2D rb; //刚体
-
-
-    public LineRenderer lineRight;
-    public LineRenderer lineLeft;
-    public Transform rightPos;
+    protected Rigidbody2D rb; //刚体
+    public LineRenderer lineRight; //右弹簧
+    public LineRenderer lineLeft; //左弹簧
+    public Transform rightPos; //右弹弓位置
     public Transform leftPos;
     public GameObject boom; //爆炸组件
     private TestMyTrail myTrail; //拖尾脚本
     private bool canDrag=true; //小鸟是否可以拖拽
+    private bool isFly; //小鸟是否在飞
+    public float cameraSmooth=3;
+    public AudioClip selectAudio;
+    public AudioClip flyAudio;
+    public Sprite hurt;
+    private SpriteRenderer render;
     private void Awake()
     {
         sp = GetComponent<SpringJoint2D>();
+        rb = GetComponent<Rigidbody2D>();
         myTrail=GetComponent<TestMyTrail>();
         //由于要在其他类中访问sp，所以要在awake中赋值，否则访问时会出现未赋值的情况
+        render=GetComponent<SpriteRenderer>();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        //sp = GetComponent<SpringJoint2D>();
-        rb = GetComponent<Rigidbody2D>();
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -47,11 +53,28 @@ public class bird : MonoBehaviour
             }
             line();
         }
+
+        //相机跟随
+        float posX=transform.position.x;
+        Camera.main.transform.position=Vector3.Lerp(Camera.main.transform.position,
+                                                    new Vector3(Mathf.Clamp(posX,0,17),
+                                                                Camera.main.transform.position.y,
+                                                                Camera.main.transform.position.z),
+                                                    cameraSmooth*Time.time);
+        
+        if (isFly) //使用技能
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                Skill();
+            }
+        }
     }
     private void OnMouseDown()
     {
         if(canDrag)
         {
+            AudioPlay(selectAudio);
             mouseDown=true;
             rb.isKinematic=true;
             //鼠标拖拽时开启运动学，此时不受物理限制，拖拽时不受重力弹力等因素的干扰，以免获取过多力导致速度过大
@@ -63,20 +86,29 @@ public class bird : MonoBehaviour
         {
             mouseDown=false;
             rb.isKinematic=false; //关闭运动学，开始计算弹力
-            Invoke("fly",0.05f);
+            Invoke("Fly",0.05f);
             //延迟调用方法，给予计算获取弹簧关节弹力的时间，否则来不及获得弹力就失去弹簧关节作用
             lineLeft.enabled=false;
             lineRight.enabled=false;
         }
         canDrag=false;
     }
-    private void fly() //起飞
+    ///<summary>
+    //起飞
+    ///</summary>
+    private void Fly() 
     {
+        AudioPlay(flyAudio);
         myTrail.trailStart(); //开始拖尾
         sp.enabled=false; //弹簧关节关闭
+        isFly=true;
         Invoke("changeToNextBird",4); //延时后换下一只小鸟
     }
-    private void line() //画线
+
+    /// <summary>
+    /// 画线
+    /// </summary>
+    private void line() 
     {
         lineLeft.enabled=true;
         lineRight.enabled=true;
@@ -86,7 +118,10 @@ public class bird : MonoBehaviour
         lineLeft.SetPosition(0,leftPos.position);
         lineLeft.SetPosition(1,transform.position);
     }
-    private void changeToNextBird()//此小鸟销毁,下一只小鸟初始化
+    ///<summary>
+    ///此小鸟销毁,下一只小鸟初始化
+    ///</summary>
+    private void changeToNextBird()
     {
         GameManager._instance.birds.Remove(this);
         Destroy(gameObject);
@@ -96,5 +131,22 @@ public class bird : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) //
     {
         myTrail.trailEnd();
+        isFly=false;
+        if (collision.relativeVelocity.magnitude>4)
+        {
+            render.sprite=hurt;
+        }
+        
+    }
+    public void AudioPlay(AudioClip clip)
+    {
+        AudioSource.PlayClipAtPoint(clip,transform.position);
+    }
+    ///<summarry>
+    ///使用主动技能
+    ///
+    public virtual void Skill()
+    {
+            isFly=false;
     }
 }

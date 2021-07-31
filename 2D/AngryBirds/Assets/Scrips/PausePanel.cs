@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; //用来调用SceneManager方法
 
 public class PausePanel : MonoBehaviour
 {
@@ -13,7 +14,8 @@ public class PausePanel : MonoBehaviour
     }
     public void OnRetry()
     {
-
+        Time.timeScale = 1;
+        SceneManager.LoadScene(2); //加载2号场景(02-game)
     }
     public void OnPause()
     {
@@ -24,7 +26,7 @@ public class PausePanel : MonoBehaviour
     public void OnHome()
     {
         Time.timeScale = 1;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        SceneManager.LoadScene(1);
     }
     public void OnResume()
     {
@@ -35,7 +37,7 @@ public class PausePanel : MonoBehaviour
     public void PauseAnimEnd()
     {
         //Debug.Log("PauseAnimEnd");
-        Time.timeScale=0;
+        Time.timeScale=0; //时间静止
     }
     public void ResumeAnimEnd()
     {
