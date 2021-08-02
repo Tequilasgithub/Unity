@@ -104,7 +104,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &6861573419934551558
 BoxCollider2D:
@@ -144,8 +144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6105b5ffb0396f44a1c363b04258348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 8
-  minSpeed: 4
+  maxSpeed: 9
+  minSpeed: 6
   hurt: {fileID: -5816911033326071667, guid: bb082e0a347985d47b131759ce3cf8a7, type: 3}
   boom: {fileID: 2789039713947135671, guid: 3d4cb26905e395a4584566d861257e5b, type: 3}
   score: {fileID: 8068742055168572827, guid: 4b6afff0244d1f14ca2d82d576fb4d35, type: 3}

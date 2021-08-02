@@ -22,14 +22,14 @@ public class bird : MonoBehaviour
     public Transform rightPos; //右弹弓位置
     public Transform leftPos;
     public GameObject boom; //爆炸组件
-    private TestMyTrail myTrail; //拖尾脚本
+    protected TestMyTrail myTrail; //拖尾脚本
     private bool canDrag=true; //小鸟是否可以拖拽
-    private bool isFly; //小鸟是否在飞
+    protected bool isFly; //小鸟是否在飞
     public float cameraSmooth=3;
     public AudioClip selectAudio;
     public AudioClip flyAudio;
     public Sprite hurt;
-    private SpriteRenderer render;
+    protected SpriteRenderer render;
     private void Awake()
     {
         sp = GetComponent<SpringJoint2D>();
@@ -121,14 +121,14 @@ public class bird : MonoBehaviour
     ///<summary>
     ///此小鸟销毁,下一只小鸟初始化
     ///</summary>
-    private void changeToNextBird()
+    protected virtual void changeToNextBird()
     {
         GameManager._instance.birds.Remove(this);
         Destroy(gameObject);
         Instantiate(boom,transform.position,Quaternion.identity); //实例化一个新的组件或预制体
         GameManager._instance.NextBird(); //下一只小鸟初始化或者游戏结束的逻辑判断
     }
-    private void OnCollisionEnter2D(Collision2D collision) //
+    protected virtual void OnCollisionEnter2D(Collision2D collision) //
     {
         myTrail.trailEnd();
         isFly=false;

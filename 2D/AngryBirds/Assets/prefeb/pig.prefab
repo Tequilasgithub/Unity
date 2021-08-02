@@ -158,8 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d325ae5f06b07c1468739645eebc3c1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 6
-  minSpeed: 4
+  maxSpeed: 8
+  minSpeed: 5
   hurt: {fileID: -5668377657564915152, guid: 7b9695f17f46651468a40c8bdbd05139, type: 3}
   boom: {fileID: 2789039713947135671, guid: 3d4cb26905e395a4584566d861257e5b, type: 3}
   score: {fileID: 3507596168833218478, guid: 93d6d0dc904956d498c0e87881878cc3, type: 3}

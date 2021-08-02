@@ -50,7 +50,7 @@ public class pig : MonoBehaviour
     ///<summary>
     ///小猪死亡
     ///</summary>
-    private void Dead()
+    public void Dead()
     {
         
         GameManager._instance.pigs.Remove(this);

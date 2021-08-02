@@ -41,7 +41,7 @@ public class block : MonoBehaviour
             AudioPlay(collisionAudio);
         }
     }
-    private void Dead()
+    public void Dead()
     {
         Destroy(gameObject);
         GameObject obj = Instantiate(score,transform.position+new Vector3(0,0.5f,0),Quaternion.identity);

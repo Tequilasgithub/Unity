@@ -81,6 +81,10 @@ public class GameManager : MonoBehaviour
     {
         for(int i = 0;i<birds.Count+1;i++)
         {
+            if(i>=stars.Length)
+            {
+                break;
+            }
             yield return new WaitForSeconds(0.2f); //0.2秒后恢复
             //默认情况下，协程将在执行 yield 后的帧上恢复，但也可以使用 WaitForSeconds 来引入时间延迟
             //可通过这样的协程在一段时间内传播效果，但也可将其作为一种有用的优化
