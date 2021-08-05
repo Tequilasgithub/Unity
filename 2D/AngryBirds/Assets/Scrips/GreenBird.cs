@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GreenBird : bird
 {
-    // Start is called before the first frame update
     public override void Skill()
     {
         base.Skill();

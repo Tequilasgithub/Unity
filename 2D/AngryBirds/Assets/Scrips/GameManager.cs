@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     public GameObject win; //胜利UI
     public GameObject lose; //失败UI
     public GameObject[] stars; //星星数组
+
+    public int starsNum=0; //
+    private int totalNum=15; //总关卡数
+
     private void Awake()
     {
         if(birds.Count>0)
@@ -36,11 +40,13 @@ public class GameManager : MonoBehaviour
                 birds[i].transform.position=origionPos;
                 birds[i].enabled    = true; //脚本启动
                 birds[i].sp.enabled = true; //弹簧关节启动
+                birds[i].canDrag=true;
             }
             else //其他小鸟
             {
                 birds[i].enabled    = false; //脚本关闭
                 birds[i].sp.enabled = false; //弹簧关节关闭
+                birds[i].canDrag=false;
             }
         }
     }
@@ -49,12 +55,12 @@ public class GameManager : MonoBehaviour
     ///</summary>
     public void NextBird() 
     {
+        
         if(pigs.Count>0) //有剩下的猪
         {
             if(birds.Count>0) //还有小鸟，未结束
             {
                 Initialized();
-                
             }
             else //无小鸟，输
             {
@@ -79,24 +85,44 @@ public class GameManager : MonoBehaviour
     ///</summary>
     IEnumerator show()
     {
-        for(int i = 0;i<birds.Count+1;i++)
+        for(;starsNum<birds.Count+1;starsNum++)
         {
-            if(i>=stars.Length)
+            if(starsNum>=stars.Length)
             {
                 break;
             }
             yield return new WaitForSeconds(0.2f); //0.2秒后恢复
             //默认情况下，协程将在执行 yield 后的帧上恢复，但也可以使用 WaitForSeconds 来引入时间延迟
             //可通过这样的协程在一段时间内传播效果，但也可将其作为一种有用的优化
-            stars[i].SetActive(true); //启动星星
+            stars[starsNum].SetActive(true); //启动星星
         }
     }
     public void Retry() //retry键
     {
+        SaveData();
         SceneManager.LoadScene(2); //加载2号场景(02-game)
     }
     public void Home() //home键
     {
+        SaveData();
         SceneManager.LoadScene(1); //加载1号场景(01-level)
+    }
+    ///<summary>
+    ///存储星星等数据
+    ///</summary>
+    public void SaveData()
+    {
+        if(starsNum>PlayerPrefs.GetInt(PlayerPrefs.GetString("nowLevel")))
+        {
+            PlayerPrefs.SetInt(PlayerPrefs.GetString("nowLevel"),starsNum);
+            //将本关的星星数存储到名为本关关卡号的PlayerPrefs中
+        }
+        int sum=0;
+        for (int i = 1; i <= totalNum; i++)
+        {
+            sum+=PlayerPrefs.GetInt("level"+i.ToString());
+        }
+        
+        PlayerPrefs.SetInt("totalStarsNum",sum);
     }
 }

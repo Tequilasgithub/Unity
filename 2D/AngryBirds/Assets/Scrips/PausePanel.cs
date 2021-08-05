@@ -22,6 +22,13 @@ public class PausePanel : MonoBehaviour
         anim.SetBool("isPause",true);
         //播放动画
         pauseBottun.SetActive(false);
+        if (GameManager._instance.birds.Count>0)
+        {
+            if(GameManager._instance.birds[0].isReleased==false) //暂停时即使未释放小鸟，也不能拖拽了
+            {
+                GameManager._instance.birds[0].canDrag=false;
+            }
+        }
     }
     public void OnHome()
     {
@@ -31,8 +38,15 @@ public class PausePanel : MonoBehaviour
     public void OnResume()
     {
         Time.timeScale=1;
-        anim.SetBool("isPause",false);
-        //播放动画
+        anim.SetBool("isPause",false);//播放动画
+
+        if (GameManager._instance.birds.Count>0)
+        {
+            if(GameManager._instance.birds[0].isReleased==false) //取消暂停时恢复可以拖拽
+            {
+                GameManager._instance.birds[0].canDrag=true;
+            }
+        }
     }
     public void PauseAnimEnd()
     {

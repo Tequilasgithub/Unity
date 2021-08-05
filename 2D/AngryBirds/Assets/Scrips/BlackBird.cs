@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BlackBird : bird
 {
-    // Start is called before the first frame update
     public List<pig> pigs=new List<pig>();
     public List<block> blocks=new List<block>();
     ///<summary>
@@ -49,14 +48,15 @@ public class BlackBird : bird
     public override void Skill()
     {
         base.Skill();
-        if(blocks.Count>0)
+        Debug.Log("Skill");
+        if(blocks.Count>0&&blocks!=null)
         {
             for (int i = 0; i < blocks.Count; i++)
             {
                 blocks[i].Dead();
             }
         }
-        if(pigs.Count>0)
+        if(pigs.Count>0&&pigs!=null)
         {
             for (int i = 0; i < pigs.Count; i++)
             {
@@ -67,6 +67,7 @@ public class BlackBird : bird
     }
     void OnClear()
     {
+        Debug.Log("OnClear");
         rb.velocity=Vector3.zero;
         Instantiate(boom,transform.position,Quaternion.identity);
         render.enabled=false;
@@ -75,6 +76,7 @@ public class BlackBird : bird
     }
     protected override void changeToNextBird()
         {
+            Debug.Log("blackchangeToNextBird");
             GameManager._instance.birds.Remove(this);
             Destroy(gameObject);
             //Instantiate(boom,transform.position,Quaternion.identity); //实例化一个新的组件或预制体
@@ -87,6 +89,9 @@ public class BlackBird : bird
         if (collision.relativeVelocity.magnitude>4)
         {
             Skill();
+            GameManager._instance.birds.Remove(this);
+            Destroy(gameObject);
+            GameManager._instance.NextBird();
         }
     }
 }

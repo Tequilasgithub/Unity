@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class bird : MonoBehaviour
 {
@@ -23,13 +24,17 @@ public class bird : MonoBehaviour
     public Transform leftPos;
     public GameObject boom; //爆炸组件
     protected TestMyTrail myTrail; //拖尾脚本
-    private bool canDrag=true; //小鸟是否可以拖拽
-    protected bool isFly; //小鸟是否在飞
+    [HideInInspector]
+    public bool canDrag=false; //小鸟是否可以拖拽
+    protected bool isFly=false; //小鸟是否在飞
+    [HideInInspector]
+    public bool isReleased=false; //小鸟是否释放
     public float cameraSmooth=3;
     public AudioClip selectAudio;
     public AudioClip flyAudio;
     public Sprite hurt;
     protected SpriteRenderer render;
+
     private void Awake()
     {
         sp = GetComponent<SpringJoint2D>();
@@ -41,6 +46,12 @@ public class bird : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(EventSystem.current.IsPointerOverGameObject())
+        //判断是否点击到了UI界面，若是则不触发小鸟的点击事件
+        {
+            return;
+        }
         if(mouseDown)
         {
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition); //小鸟随鼠标拖拽
@@ -90,14 +101,15 @@ public class bird : MonoBehaviour
             //延迟调用方法，给予计算获取弹簧关节弹力的时间，否则来不及获得弹力就失去弹簧关节作用
             lineLeft.enabled=false;
             lineRight.enabled=false;
+            canDrag=false;
         }
-        canDrag=false;
+        
     }
     ///<summary>
     //起飞
     ///</summary>
     private void Fly() 
-    {
+    {   isReleased=true;
         AudioPlay(flyAudio);
         myTrail.trailStart(); //开始拖尾
         sp.enabled=false; //弹簧关节关闭
@@ -123,6 +135,7 @@ public class bird : MonoBehaviour
     ///</summary>
     protected virtual void changeToNextBird()
     {
+        //Debug.Log("changeToNextBird");
         GameManager._instance.birds.Remove(this);
         Destroy(gameObject);
         Instantiate(boom,transform.position,Quaternion.identity); //实例化一个新的组件或预制体
