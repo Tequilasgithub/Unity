@@ -36,8 +36,10 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scrips\LoadLevelAsync.cs" />
      <Compile Include="Assets\Scrips\PausePanel.cs" />
      <Compile Include="Assets\PocketRPG Trails\Scripts\Effects\WeaponTrail.cs" />
+     <Compile Include="Assets\Scrips\Egg.cs" />
      <Compile Include="Assets\Scrips\GameManager.cs" />
      <Compile Include="Assets\Scrips\Return.cs" />
      <Compile Include="Assets\Scrips\YellowBird.cs" />
@@ -54,9 +56,8 @@
      <Compile Include="Assets\Scrips\win.cs" />
      <Compile Include="Assets\Scrips\LoadLevel.cs" />
      <Compile Include="Assets\Scrips\block.cs" />
-     <Compile Include="Assets\Scrips\LoadLevelAsync.cs" />
      <Compile Include="Assets\Scrips\WhiteBird.cs" />
-     <Compile Include="Assets\Scrips\Egg.cs" />
+     <Compile Include="Assets\Scrips\ExitGame.cs" />
     <Reference Include="UnityEngine">
         <HintPath>D:/Tequila/work/unity/2020.3.12f1c1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
