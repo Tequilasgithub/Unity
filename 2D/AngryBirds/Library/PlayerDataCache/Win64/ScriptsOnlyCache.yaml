@@ -23,10 +23,13 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
+    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
+    - UnityEditor.Tilemaps.GridPaletteBrushes
+    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
@@ -896,4 +899,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/00-load.unity
   - Assets/Scenes/01-level.unity
   - Assets/Scenes/02-game.unity
-  playerPath: D:/Tequila/work/unity_pogram_git/AngryBird/AngryBirds_1.0.exe
+  playerPath: D:/Tequila/work/unity_pogram_git/AngryBird/2.0/AngryBirds.exe

@@ -227,7 +227,7 @@ SpringJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.08755255, y: 0.8255764}
+  m_ConnectedAnchor: {x: -4.984278, y: -1.3011706}
   m_AutoConfigureDistance: 0
   m_Distance: 0.4
   m_DampingRatio: 0
@@ -263,7 +263,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.0059991437, y: -0.107435584}
   serializedVersion: 2
-  m_Radius: 2.8
+  m_Radius: 2.88
 --- !u!114 &1026982867069911534
 MonoBehaviour:
   m_ObjectHideFlags: 0

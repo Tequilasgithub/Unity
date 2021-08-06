@@ -124,7 +124,7 @@ SpringJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0.02764368, y: -0.08001518}
-  m_ConnectedAnchor: {x: -0.08755255, y: 0.8255764}
+  m_ConnectedAnchor: {x: -5.037658, y: -1.238627}
   m_AutoConfigureDistance: 0
   m_Distance: 0.4
   m_DampingRatio: 0
@@ -212,6 +212,8 @@ MonoBehaviour:
   rightPos: {fileID: 0}
   leftPos: {fileID: 0}
   boom: {fileID: 2789039713947135671, guid: 3d4cb26905e395a4584566d861257e5b, type: 3}
+  canDrag: 0
+  isReleased: 0
   cameraSmooth: 3
   selectAudio: {fileID: 8300000, guid: 3641c9435ad52ea429348437c2742cdb, type: 3}
   flyAudio: {fileID: 8300000, guid: 65774e057815a5e4fa70215e9acad616, type: 3}
